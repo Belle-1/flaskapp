@@ -86,52 +86,51 @@ div.product-price-container {
      }
 }
 
-/* http://ianlunn.github.io/Hover/s */
-/* Icon Up */
-@-webkit-keyframes hvr-icon-up {
-  0%,
-	50%,
-	100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  25%,
-	75% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
+.post-1-n{
+  top:-.25rem!important;
 }
-@keyframes hvr-icon-up {
-  0%,
-	50%,
-	100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  25%,
-	75% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-  }
+
+.post-2-n{
+  top:-.5rem!important;
 }
-/* Icon Up */
-.hvr-icon-up {
-  cursor: pointer !important;
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+.post-3-n{
+  top:-1rem!important;
 }
-.hvr-icon-up .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+
+.posr-1-n{
+  right:-.02rem!important;
 }
-.hvr-icon-up:hover .hvr-icon, .hvr-icon-up:focus .hvr-icon, .hvr-icon-up:active .hvr-icon {
-  -webkit-animation-name: hvr-icon-up;
-  animation-name: hvr-icon-up;
-  -webkit-animation-duration: 0.75s;
-  animation-duration: 0.75s;
-  -webkit-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
+
+.posr-2-n{
+  right:-.5rem!important;
 }
+
+.posr-3-n{
+  right:-1rem!important;
+}
+
+.btn-color{
+  border-radius: 50px;
+  border-width: medium;
+  border-color: #cccccc;
+}
+
+.products-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item{
+  box-sizing: border-box;
+  flex: 0 0 20%;
+  padding: 12px 0px 0px 12px;
+}
+
+
+
+
+
+
+
+/*  */

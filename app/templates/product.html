@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="rtl">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
 
         <div class="col-4 mx-auto text-center">
 
-          <div id="owl-demo" class="owl-carousel owl-theme">
+          <div id="owl-demo" class="owl-carousel owl-theme border border-light">
             <div class="item"><img src="{{ url_for('static', filename='img/N11049215A_1.jpg') }}" class="" alt="Responsive image"></div>
             <div class="item"><img src="{{ url_for('static', filename='img/N12311053A_1.jpg') }}" class="" alt="Responsive image"></div>
             <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
@@ -80,13 +80,16 @@
             <input type="number" id="" name="" value="1" min="1" max="100">
           </div>
           <div class="mb-4 mt-4">
-            <button type="button" name="button" class="btn btn-primary btn-lg btn-block">إضافة الى عربة التسوق</button>
+            <!-- Button trigger modal -->
+            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" name="button" class="btn btn-primary btn-lg btn-block">إضافة الى عربة التسوق</button>
           </div>
         </div>
 
-        <div class="col-3 text-right my-auto">
-          <div class="vl ml-2"></div>
-          <ul class="site-features pr-0">
+        <div class="col-3 text-right pt-3">
+          <div class="vl"></div>
+          <h6 class="pr-3 text-dark">مميزات الموقع</h6>
+          <hr class="mr-3 mb-1">
+          <ul class="site-features pr-2">
             <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/COD-icon.png') }}" alt="..." class="">الدفع عند التوصيل</p></li>
             <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/exchange-icon.png') }}" alt="..." class="">إمكانية الإرجاع والتبديل</p></li>
             <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/delivery-icon.png') }}" alt="..." class="">خدمة توصيل</p></li>
@@ -101,8 +104,25 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content container text-center">
+          <div class="modal-body mt-3">
+            <h5 class="text-dark">تم إضافة المنتج إلى عربة التسوق بنجاح</h5>
+            <img src="{{ url_for('static', filename='img/success-icon.png') }}" alt="..." class="mt-2 mb-2">
+          </div>
+          <div class="mb-3">
+            <p>ماذا تريد أن تفعل الآن؟</p>
+            <button type="button" class="btn btn-primary btn-block">عرض محتويات العربة</button>
+            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">متابعة التسوق</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
-    <div class="container-fluid mb-4 mt-5 bg-light">
+    <div class="container-fluid mb-4 mt-5 bg-light fixed-bottom">
 
       <div class="row pt-5 pb-5 justify-content-center">
         <div class="contact-us col-2 text-center">

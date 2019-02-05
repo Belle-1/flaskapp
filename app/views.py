@@ -22,7 +22,8 @@ def product(product_id):
 
 @app.route("/shopping_cart", methods=["GET"])
 def shopping_cart():
-    return "this page shows the items added to the shopping cart."
+    # "this page shows the items added to the shopping cart."
+    return render_template("shopping_cart.html")
 
 
 @app.route("/submit_purchase", methods=["GET"])

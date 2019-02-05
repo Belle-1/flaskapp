@@ -127,6 +127,36 @@ div.product-price-container {
   padding: 12px 0px 0px 12px;
 }
 
+#owl-demo .item img{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+ul.site-features {
+  list-style-type: none;
+}
+
+ul.site-features img {
+  width: 60px;
+  height: 60px;
+}
+
+.vl {
+  border-left: 2px solid #cccccc;
+  height: 100%;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

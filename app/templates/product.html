@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!--  custom CSS  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page.css') }}">
+
+    <!-- fontawesome.com -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <!-- owlcarousel2.github.io / CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/owl.theme.default.min.css') }}">
+    <title>Hello, world!</title>
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+          <ul class="navbar-nav">
+            <li class="nav-item ml-2">
+              <a class="nav-link" href="#">نساء</a>
+            </li>
+            <li class="nav-item ml-2">
+              <a class="nav-link" href="#">رجال</a>
+            </li>
+            <li class="nav-item ml-2">
+              <a class="nav-link" href="#">أطفال</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-md-0 mr-2 ml-auto">
+            <input class="form-control" type="text" placeholder="ما الذي تبحث عنه؟" aria-label="Search">
+          </form>
+          <a class="nav-link active position-relative">
+            <span class="badge badge-pill badge-primary position-absolute posr-1-n">11</span>
+            <i class="fas fa-shopping-basket" style="font-size: 1.5em;"></i>&ensp;عربة التسوق&ensp;
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row mt-4">
+
+        <div class="col-4 mx-auto text-center">
+
+          <div id="owl-demo" class="owl-carousel owl-theme">
+            <div class="item"><img src="{{ url_for('static', filename='img/N11049215A_1.jpg') }}" class="" alt="Responsive image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='img/N12311053A_1.jpg') }}" class="" alt="Responsive image"></div>
+            <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
+          </div>
+        </div>
+
+        <div class="col-5 text-right">
+          <h4 class="text-secondary">product name in here sds sdfasd asdf sdfsd fasdf sdfasd fasdfasd fsdf </h4>
+          <p class="text-muted">id number of product</p>
+          <div class="product-price mt-4">
+            <span class="text-muted"><small><s>dfgdfgd</s></small></span> <span class="badge badge-info">sadfasf</span>
+            <br>
+            <h4 class="font-weight-bold text-dark">selling</h4>
+          </div>
+          <div class="filter-container mb-4 mt-4">
+            <h5 class="text-dark">المقاس</h5>
+            <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">L</button>
+            <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">M</button>
+            <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">S</button>
+          </div>
+          <div class="filter-container mb-4 mt-4">
+            <h5 class="text-dark">الكمية</h5>
+            <input type="number" id="" name="" value="1" min="1" max="100">
+          </div>
+          <div class="mb-4 mt-4">
+            <button type="button" name="button" class="btn btn-primary btn-lg btn-block">إضافة الى عربة التسوق</button>
+          </div>
+        </div>
+
+        <div class="col-3 text-right my-auto">
+          <div class="vl ml-2"></div>
+          <ul class="site-features pr-0">
+            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/COD-icon.png') }}" alt="..." class="">الدفع عند التوصيل</p></li>
+            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/exchange-icon.png') }}" alt="..." class="">إمكانية الإرجاع والتبديل</p></li>
+            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/delivery-icon.png') }}" alt="..." class="">خدمة توصيل</p></li>
+            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/whatsapp-icon.png') }}" alt="..." class="">تواصل معنا 0912343212</p></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid mb-4 mt-5 bg-light">
+
+      <div class="row pt-5 pb-5 justify-content-center">
+        <div class="contact-us col-2 text-center">
+          <h5 class="mb-3">تواصل معنا</h5>
+          <p class="mb-1"><i class="fas fa-phone"></i> 00963940606060</p>
+          <p class="mb-1"><i class="fab fa-whatsapp"></i> 00963940606060</p>
+          <p class="mb-1"><i class="far fa-envelope"></i> name@domain.com</p>
+        </div>
+        <div class="other-links col-2 text-center">
+          <h5 class="mb-3">السياسة العامة</h5>
+          <p class="mb-1">إرجاع واستبدال السلع</p>
+          <p class="mb-1">خدمة التوصيل</p>
+          <p class="mb-1">كيفية الطلب</p>
+          <p class="mb-1">الشروط والأحكام</p>
+        </div>
+      </div>
+    </div> <!-- End of Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- owlcarousel2.github.io / JS -->
+    <script src="{{ url_for('static', filename='js/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $("#owl-demo").owlCarousel({
+          navigation : true, // Show next and prev buttons
+          slideSpeed : 300,
+          paginationSpeed : 400,
+          items : 1,
+          itemsDesktop : false,
+          itemsDesktopSmall : false,
+          itemsTablet: false,
+          itemsMobile : false,
+          singleItem:true,
+          rtl: true
+        });
+
+      });
+    </script>
+  </body>
+</html>

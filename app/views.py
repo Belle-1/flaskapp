@@ -16,8 +16,8 @@ def products(category_id):
 
 @app.route("/product/<int:product_id>", methods=["GET"])
 def product(product_id):
-    return f"this page shows the information/details about specific product: {product_id} with a 'add to cart' option " \
-           f"for customers."
+    # f"this page shows the information/details about specific product: {product_id} with a 'add to cart' option for customers."
+    return render_template("product.html")
 
 
 @app.route("/shopping_cart", methods=["GET"])

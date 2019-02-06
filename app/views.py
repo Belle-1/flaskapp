@@ -28,5 +28,5 @@ def shopping_cart():
 
 @app.route("/submit_purchase", methods=["GET"])
 def submit_purchase():
-    return "this page dedicated for customers to provide shipment information along with phone number validation for " \
-           "submitting the purchase"
+    # "this page dedicated for customers to provide shipment information along with phone number validation for submitting the purchase"
+    return render_template("submit_purchase.html")

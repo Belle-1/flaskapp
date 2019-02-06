@@ -127,7 +127,7 @@ div.product-price-container {
   padding: 12px 0px 0px 12px;
 }
 
-#owl-demo .item img{
+#product-slideshow .item img{
   display: block !important;
   width: 100% !important;
   height: auto !important;
@@ -151,6 +151,30 @@ ul.site-features img {
 .table-hr {
   border-top: 3px solid rgba(0,0,0,.1);
 }
+
+.shopping-cart-img div.item {
+  height: 110px;
+  width: 80px;
+  padding: 0;
+}
+
+.shopping-cart-img div.item img {
+  height: auto;
+  width: 100%;
+}
+
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+
+
+
+
+
+
 
 
 

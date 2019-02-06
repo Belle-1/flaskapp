@@ -21,61 +21,47 @@
   </head>
   <body class="">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExample07">
+      <div class="container  d-flex justify-content-center pt-3 pb-3">
           <ul class="navbar-nav">
             <li class="nav-item ml-2">
-              <a class="nav-link" href="#">نساء</a>
+              <a class="active">حقيبة التسوق <i class="fas fa-angle-left"></i>&ensp; </a>
             </li>
             <li class="nav-item ml-2">
-              <a class="nav-link" href="#">رجال</a>
-            </li>
-            <li class="nav-item ml-2">
-              <a class="nav-link" href="#">أطفال</a>
+              <a class="disabled"> إتمام عملية الشراء </a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-md-0 mr-2 ml-auto">
-            <input class="form-control" type="text" placeholder="ما الذي تبحث عنه؟" aria-label="Search">
-          </form>
-          <a class="nav-link active position-relative">
-            <span class="badge badge-pill badge-primary position-absolute posr-1-n">11</span>
-            <i class="fas fa-shopping-basket" style="font-size: 1.5em;"></i>&ensp;عربة التسوق&ensp;
-          </a>
-        </div>
       </div>
     </nav>
 
     <div class="container pt-4 bg-danger">
-      <div class="d-flex justify-content-center">
-        <p class="text-primary">حقيبة التسوق <i class="fas fa-angle-left"></i>&ensp; </p> <p class="text-secondary"> إتمام عملية الشراء </p>
-      </div>
+
       <div class="row text-right">
-        <div class="col-9 bg-white table-responsive">
+        <div class="col-9 bg-white table-responsive shopping-cart">
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">المنتج</th>
-                <th scope="col">الكمية</th>
+                <th scope="col" colspan="2">المنتج</th>
+                <th scope="col" class="fit">الكمية</th>
                 <th scope="col">السعر</th>
                 <th scope="col">الإجمالي</th>
-                <th scope="col"></th>
+                <th scope="col" class="fit"></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">
+                <th scope="row" class="shopping-cart-img fit">
                   <div class="">
-                    <img class="image of product" src="" alt="">
-                    <p class="product name"></p>
-                    <p class="product size"></p>
+                    <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
                   </div>
                 </th>
-                <td>quantity input</td>
-                <td>123$</td>
+                <td>
+                  <p class="product name mb-1"> اسم المنتج اسم المنتج ام المنجاسم المنتج اسم المنتج اسم المنتج اسم المنتج</p>
+                  <p class="product size mb-1"><b>المقاس: </b> L</p>
+                </td>
+                <td>
+                  <input type="number" id="" name="" value="1" min="1" max="100">
+                </td>
+                <td>122342343$</td>
                 <td>123123$</td>
                 <td><i class="fas fa-times"></i></td>
               </tr>
@@ -116,7 +102,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="container-fluid mb-4 mt-5 bg-light fixed-bottom">
+    <div class="container-fluid mb-4 mt-5 bg-light">
 
       <div class="row pt-5 pb-5 justify-content-center">
         <div class="contact-us col-2 text-center">

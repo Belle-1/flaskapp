@@ -100,6 +100,7 @@
               <label for="inputAddress2">تفاصيل السكن</label>
               <input type="text" class="form-control" placeholder="رقم العمارة, رقم الطابق, ...">
             </div>
+            check box for policies and terms of use and terms of sale
           </div>
         </div>
         <div class="row">
@@ -148,10 +149,10 @@
         </div>
         <div class="other-links col-sm-2 text-center">
           <h5 class="mb-3 mt-3">السياسة العامة</h5>
-          <p class="mb-1">إرجاع واستبدال السلع</p>
-          <p class="mb-1">خدمة التوصيل</p>
-          <p class="mb-1">كيفية الطلب</p>
-          <p class="mb-1">الشروط والأحكام</p>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">إرجاع واستبدال السلع</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">خدمة التوصيل</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">كيفية الطلب</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">الشروط والأحكام</a>
         </div>
       </div>
     </div> <!-- End of Footer -->

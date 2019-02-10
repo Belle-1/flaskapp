@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/owl.theme.default.min.css') }}">
     <title>Hello, world!</title>
   </head>
-  <body class="">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
       <div class="container  d-flex justify-content-center pt-3 pb-3">
           <ul class="navbar-nav">
             <li class="nav-item ml-2">
@@ -39,7 +39,8 @@
     <div class="container pt-4">
 
       <div class="row text-right">
-        <div class="col-9 table-responsive shopping-cart">
+        <div class="col-sm-9">
+          <div class="table-responsive shopping-cart-summary">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -54,51 +55,53 @@
               <tr>
                 <th scope="row" class="shopping-cart-img fit">
                   <div class="">
-                    <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
+                    <div class="item" data-product-image=""><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt=""></div>
                   </div>
                 </th>
                 <td>
-                  <p class="product name mb-1"> اسم المنتج اسم المنتج ام المنجاسم المنتج اسم المنتج اسم المنتج اسم المنتج</p>
-                  <p class="product size mb-1"><b>المقاس: </b> L</p>
+                  <a class="mb-1 text-dark" href="{{ url_for('.landing_page') }}" data-product-name=""> اسم المنتج اسم المنتج ام المنجاسم المنتج اسم المنتج اسم المنتج اسم المنتج</a>
+                  <p class="text-muted mb-0" data-product-id="">id number of product</p>
+                  <p class="mb-1" data-size=""><b>المقاس: </b> L</p>
                 </td>
                 <td>
-                  <input type="number" id="" name="" value="1" min="1" max="100">
+                  <input type="number" id="" name="" value="1" min="1" max="100" data-product-quantity="">
                 </td>
-                <td>122342343$</td>
-                <td>123123$</td>
-                <td><i class="fas fa-times"></i> إزالة</td>
+                <td data-product-price="">122342343$</td>
+                <td data-product-total-price="">123123$</td>
+                <td data-remove-product=""><i class="fas fa-times"></i> إزالة</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="col-3 bg-white pt-2 pb-5 pr-3 pl-3">
+        </div>
+        <div class="col-sm-3 bg-white pt-2 pb-5 pr-3 pl-3">
         <div class="vl"></div>
         <div class="mr-2">
           <h5 class="text-dark">ملخص الطلب</h5>
           <hr class="mb-1">
           <div class="table-responsive">
-            <table class="table table-hover table-sm table-borderless">
+            <table class="table table-sm table-borderless">
               <tbody>
                 <tr>
                   <td class="pt-1 pb-1" scope="col">عدد القطع</td>
-                  <td class="pt-1 pb-1 float-left" scope="col">9</td>
+                  <td class="pt-1 pb-1 float-left" scope="col" data-product-total-quantity="">9</td>
                 </tr>
                 <tr>
                   <td class="pt-1 pb-1">المجموع الفرعي</td>
-                  <td class="pt-1 pb-1 float-left">252019$</td>
+                  <td class="pt-1 pb-1 float-left" data-order-subtotal="">252019$</td>
                 </tr>
                 <tr>
                   <td class="pt-1 pb-1">تكلفة الشحن</td>
-                  <td class="pt-1 pb-1 float-left text-success">+843$</td>
+                  <td class="pt-1 pb-1 float-left text-success" data-delivery-charges="">+843$</td>
                 </tr>
                 <tr class="table-hr">
                   <th class="text-dark" scope="row">إجمالي الطلب</th>
-                  <th class="text-dark float-left">252019$</th>
+                  <th class="text-dark float-left" data-order-total="">252019$</th>
                 </tr>
               </tbody>
             </table>
           </div>
-          <button type="button" name="button" class="btn btn-primary btn-block">إتمام عملية الشراء</button>
+          <button type="button" name="button" class="btn btn-primary btn-block">إتمام عملية الشراء</button> <!-- here where I check for the availability of the products before transmiting the cutomer to the next step -->
           </div>
         </div>
       </div>
@@ -116,10 +119,10 @@
         </div>
         <div class="other-links col-sm-2 text-center">
           <h5 class="mb-3 mt-3">السياسة العامة</h5>
-          <p class="mb-1">إرجاع واستبدال السلع</p>
-          <p class="mb-1">خدمة التوصيل</p>
-          <p class="mb-1">كيفية الطلب</p>
-          <p class="mb-1">الشروط والأحكام</p>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">إرجاع واستبدال السلع</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">خدمة التوصيل</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">كيفية الطلب</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">الشروط والأحكام</a>
         </div>
       </div>
     </div> <!-- End of Footer -->

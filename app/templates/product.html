@@ -19,23 +19,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/owlcarousel/owl.theme.default.min.css') }}">
     <title>Hello, world!</title>
   </head>
-  <body class="">
+  <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsHeader" aria-controls="navbarsHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExample07">
+        <div class="collapse navbar-collapse text-right" id="navbarsHeader">
           <ul class="navbar-nav">
             <li class="nav-item ml-2">
-              <a class="nav-link" href="#">نساء</a>
+              <a class="nav-link" href="{{ url_for('products', category_id=123) }}">نساء</a>
             </li>
             <li class="nav-item ml-2">
-              <a class="nav-link" href="#">رجال</a>
+              <a class="nav-link" href="{{ url_for('products', category_id=123) }}">رجال</a>
             </li>
             <li class="nav-item ml-2">
-              <a class="nav-link" href="#">أطفال</a>
+              <a class="nav-link" href="{{ url_for('products', category_id=123) }}">أطفال</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-md-0 mr-2 ml-auto">
@@ -52,16 +52,20 @@
     <div class="container mb-5 pb-5">
       <div class="row mt-4">
 
-        <div class="col-4 mx-auto text-center">
-
+        <div class="col-sm-4 mx-auto text-center">
           <div id="product-slideshow" class="owl-carousel owl-theme border border-light">
             <div class="item"><img src="{{ url_for('static', filename='img/N11049215A_1.jpg') }}" class="" alt="Responsive image"></div>
             <div class="item"><img src="{{ url_for('static', filename='img/N12311053A_1.jpg') }}" class="" alt="Responsive image"></div>
             <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
           </div>
+          <div class="d-block mt-2 bg-dark">
+            <button type="button" name="button" class="product-share-btn">
+              <i class="fas fa-share-square text-dark"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="col-5 text-right">
+        <div class="col-sm-5 text-right">
           <h4 class="text-secondary">product name in here sds sdfasd asdf sdfsd fasdf sdfasd fasdfasd fsdf </h4>
           <p class="text-muted">id number of product</p>
           <div class="product-price mt-4">
@@ -69,13 +73,13 @@
             <br>
             <h4 class="font-weight-bold text-dark">selling</h4>
           </div>
-          <div class="filter-container mb-4 mt-4">
+          <div class="filter-container filter-size mb-4 mt-4">
             <h5 class="text-dark">المقاس</h5>
             <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">L</button>
             <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">M</button>
             <button type="button" class="btn btn-outline-primary btn-sm pl-3 pr-3">S</button>
           </div>
-          <div class="filter-container mb-4 mt-4">
+          <div class="filter-container filter-quantity mb-4 mt-4">
             <h5 class="text-dark">الكمية</h5>
             <input type="number" id="" name="" value="1" min="1" max="100">
           </div>
@@ -85,15 +89,15 @@
           </div>
         </div>
 
-        <div class="col-3 text-right pt-3">
+        <div class="col-sm-3 text-right pt-3">
           <div class="vl"></div>
-          <h6 class="pr-3 text-dark">مميزات الموقع</h6>
+          <h6 class="pr-3 text-dark">مميزات الشراء من موقعنا</h6>
           <hr class="mr-3 mb-1">
           <ul class="site-features pr-2">
-            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/COD-icon.png') }}" alt="..." class="">الدفع عند التوصيل</p></li>
-            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/exchange-icon.png') }}" alt="..." class="">إمكانية الإرجاع والتبديل</p></li>
-            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/delivery-icon.png') }}" alt="..." class="">خدمة توصيل</p></li>
-            <li><p class="mb-0 text-dark"><img src="{{ url_for('static', filename='img/whatsapp-icon.png') }}" alt="..." class="">تواصل معنا 0912343212</p></li>
+            <li><a class="mb-0 text-dark d-block" href="{{ url_for('.landing_page') }}"><img src="{{ url_for('static', filename='img/COD-icon.png') }}" alt="..." class="">الدفع عند التوصيل</a></li>
+            <li><a class="mb-0 text-dark d-block" href="{{ url_for('.landing_page') }}"><img src="{{ url_for('static', filename='img/exchange-icon.png') }}" alt="..." class="">إمكانية الإرجاع والتبديل</a></li>
+            <li><a class="mb-0 text-dark d-block" href="{{ url_for('.landing_page') }}"><img src="{{ url_for('static', filename='img/delivery-icon.png') }}" alt="..." class="">خدمة توصيل</a></li>
+            <li><a class="mb-0 text-dark d-block" href="{{ url_for('.landing_page') }}"><img src="{{ url_for('static', filename='img/whatsapp-icon.png') }}" alt="..." class="">تواصل معنا 0912343212</a></li>
           </ul>
         </div>
 
@@ -110,7 +114,7 @@
           </div>
           <div class="mb-3">
             <p>ماذا تريد أن تفعل الآن؟</p>
-            <button type="button" class="btn btn-primary btn-block">عرض محتويات العربة</button>
+            <a class="btn btn-link btn-primary btn-block" href="{{ url_for('.shopping_cart') }}">عرض محتويات العربة</a>
             <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">متابعة التسوق</button>
           </div>
         </div>
@@ -129,10 +133,10 @@
         </div>
         <div class="other-links col-sm-2 text-center">
           <h5 class="mb-3 mt-3">السياسة العامة</h5>
-          <p class="mb-1">إرجاع واستبدال السلع</p>
-          <p class="mb-1">خدمة التوصيل</p>
-          <p class="mb-1">كيفية الطلب</p>
-          <p class="mb-1">الشروط والأحكام</p>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">إرجاع واستبدال السلع</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">خدمة التوصيل</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">كيفية الطلب</a>
+          <a class="mb-1 text-dark d-block" href="{{ url_for('.landing_page') }}">الشروط والأحكام</a>
         </div>
       </div>
     </div> <!-- End of Footer -->

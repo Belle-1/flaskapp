@@ -33,7 +33,7 @@ class Order(db.Model):
     submitted_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     delivery_charges = db.Column(db.Integer, nullable=False)
     sub_total = db.Column(db.Integer, nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+    total_quantity = db.Column(db.Integer, nullable=False)
     order_items = db.relationship('OrderItem', backref='order', lazy=True)  # needs to be calculated automatically
 
     def __init__(self, customer_id, submitted_on, delivery_charges, sub_total, quantity, order_items):
@@ -53,6 +53,14 @@ class OrderItem(db.Model):
     product_size_color_id = db.Column(db.Integer, db.ForeignKey('product_size_color.id'), nullable=False)
     sale_id = db.Column(db.Integer, db.ForeignKey('sale.id'), nullable=True, default=None)
     selling_price = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically like: original price */+=? sale_amount
+    quantity = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, order_id, product_size_color_id, sale_id, quantity):
+        self.order_id = order_id
+        self.product_size_color_id = product_size_color_id
+        self.sale_id = sale_id
+        self.quantity = quantity
+        self.selling_price = 1/Sale.query.filter_by(id=sale_id).sale_amount * Product.product_size_colors.filter_by(id=product_size_color_id)  # this needs to be checked against None values for sales :)
 
 
 class Product(db.Model):
@@ -116,6 +124,7 @@ class ProductPhoto(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     photo = db.Column(db.Text, nullable=False)
     is_primary = db.Column(db.Boolean, default=False)
+    # is_low_quality = db.Column(db.Boolean, default=False)
 
 
 class PendingOrder(db.Model):

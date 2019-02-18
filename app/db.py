@@ -29,20 +29,18 @@ class Address(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
-    total = db.Column(db.Integer, nullable=False)  # default= delivery_charges+subtotal
+    total = db.Column(db.Integer, nullable=False)
     submitted_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     delivery_charges = db.Column(db.Integer, nullable=False)
-    sub_total = db.Column(db.Integer, nullable=False)
-    total_quantity = db.Column(db.Integer, nullable=False)
-    order_items = db.relationship('OrderItem', backref='order', lazy=True)  # needs to be calculated automatically
+    sub_total = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically #ON HOLD
+    total_quantity = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically # ON HOLD
+    order_items = db.relationship('OrderItem', backref='order', lazy=True)
 
-    def __init__(self, customer_id, submitted_on, delivery_charges, sub_total, quantity, order_items):
+    def __init__(self, customer_id, delivery_charges, sub_total, total_quantity):
         self.customer_id = customer_id
-        self.submitted_on = submitted_on
         self.delivery_charges = delivery_charges
         self.sub_total = sub_total
-        self.quantity = quantity
-        self.order_items = order_items
+        self.total_quantity = total_quantity
         self.total = delivery_charges + sub_total
 
 
@@ -52,15 +50,15 @@ class OrderItem(db.Model):
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
     product_size_color_id = db.Column(db.Integer, db.ForeignKey('product_size_color.id'), nullable=False)
     sale_id = db.Column(db.Integer, db.ForeignKey('sale.id'), nullable=True, default=None)
-    selling_price = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically like: original price */+=? sale_amount
+    selling_price = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically like: original price */+=? sale_amount #ON HOLD
     quantity = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, order_id, product_size_color_id, sale_id, quantity):
-        self.order_id = order_id
-        self.product_size_color_id = product_size_color_id
-        self.sale_id = sale_id
-        self.quantity = quantity
-        self.selling_price = 1/Sale.query.filter_by(id=sale_id).sale_amount * Product.product_size_colors.filter_by(id=product_size_color_id)  # this needs to be checked against None values for sales :)
+    # def __init__(self, order_id, product_size_color_id, sale_id, quantity):
+    #     self.order_id = order_id
+    #     self.product_size_color_id = product_size_color_id
+    #     self.sale_id = sale_id
+    #     self.quantity = quantity
+    #     self.selling_price = 1/Sale.query.filter_by(id=sale_id).sale_amount * Product.product_size_colors.filter_by(id=product_size_color_id)  # this needs to be checked against None values for sales :)
 
 
 class Product(db.Model):
@@ -71,7 +69,7 @@ class Product(db.Model):
     price = db.Column(db.Integer, nullable=False)
     on_sale = db.Column(db.Boolean, nullable=False, default=False)
     total_quantity = db.Column(db.Integer, nullable=False)
-    photos = db.relationship('ProductPhoto', backref='product', lazy=True)  #
+    photos = db.relationship('ProductPhoto', backref='product', lazy=True)
     product_size_colors = db.relationship('ProductSizeColor', backref='product', lazy=True)
     product_sale = db.relationship('ProductSale', backref='product', lazy=True, uselist=False)
 
@@ -82,7 +80,7 @@ class Cat(db.Model):
     # cat_ar = db.Column(db.String(50), nullable=False)
     # is_main = db.Column(db.Boolean, nullable=False, default=False)
     # parent_id = db.Column(db.Integer, dbForeignKey('cat.id'), nullable=True)
-
+    # level = db.Column(db.Integer, nullable=False)
 
 class Size(db.Model):
     id = db.Column(db.Integer, primary_key=True)

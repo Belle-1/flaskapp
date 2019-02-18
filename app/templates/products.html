@@ -22,6 +22,7 @@
   <body class="">
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container">
+        <a class="navbar-brand text-right" href="{{ url_for('landing_page') }}">الصفحة الرئيسية</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsHeader" aria-controls="navbarsHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,7 +42,7 @@
           <form class="form-inline my-2 my-md-0 mr-2 ml-auto">
             <input class="form-control" type="text" placeholder="ما الذي تبحث عنه؟" aria-label="Search">
           </form>
-          <a class="nav-link active position-relative">
+          <a class="nav-link active position-relative text-dark" href="{{ url_for('.shopping_cart') }}">
             <span class="badge badge-pill badge-primary position-absolute posr-1-n">11</span>
             <i class="fas fa-shopping-basket" style="font-size: 1.5em;"></i>&ensp;عربة التسوق&ensp;
           </a>
@@ -112,7 +113,7 @@
                     </div>
                   </div>
                 </a>
-                <div class="product-share-container position-absolute fixed-bottom mt-2">
+                <div class="product-share-container position-absolute fixed-bottom">
                   <button type="button" name="button" class="product-share-btn">
                     <i class="fas fa-share-square text-dark"></i>
                   </button>

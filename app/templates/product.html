@@ -22,6 +22,7 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container">
+        <a class="navbar-brand text-right" href="{{ url_for('landing_page') }}">الصفحة الرئيسية</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsHeader" aria-controls="navbarsHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,7 +42,7 @@
           <form class="form-inline my-2 my-md-0 mr-2 ml-auto">
             <input class="form-control" type="text" placeholder="ما الذي تبحث عنه؟" aria-label="Search">
           </form>
-          <a class="nav-link active position-relative">
+          <a class="nav-link active position-relative text-dark" href="{{ url_for('.shopping_cart') }}">
             <span class="badge badge-pill badge-primary position-absolute posr-1-n">11</span>
             <i class="fas fa-shopping-basket" style="font-size: 1.5em;"></i>&ensp;عربة التسوق&ensp;
           </a>
@@ -58,9 +59,9 @@
             <div class="item"><img src="{{ url_for('static', filename='img/N12311053A_1.jpg') }}" class="" alt="Responsive image"></div>
             <div class="item"><img src="{{ url_for('static', filename='img/N11045962A_1.jpg') }}" class="" alt="Responsive image"></div>
           </div>
-          <div class="d-block mt-2 bg-dark">
-            <button type="button" name="button" class="product-share-btn">
-              <i class="fas fa-share-square text-dark"></i>
+          <div class="row">
+            <button type="button" name="button" class="btn btn-link mx-auto">
+             مشاركة المنتج  <i class="fas fa-share-square text-primary"></i>
             </button>
           </div>
         </div>
@@ -114,8 +115,10 @@
           </div>
           <div class="mb-3">
             <p>ماذا تريد أن تفعل الآن؟</p>
-            <a class="btn btn-link btn-outline-primary btn-block" href="{{ url_for('.shopping_cart') }}">عرض محتويات العربة</a>
-            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">متابعة التسوق</button>
+            <form action="{{ url_for('.shopping_cart') }}" class="mb-1">
+              <button class="btn btn-primary btn-block">عرض محتويات العربة</button>
+            </form>
+            <button type="button" class="btn btn-outline-secondary btn-block" data-dismiss="modal">متابعة التسوق</button>
           </div>
         </div>
       </div>

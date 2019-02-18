@@ -21,18 +21,21 @@
   </head>
   <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
-      <div class="container d-flex justify-content-center pt-3 pb-3">
-          <ul class="navbar-nav">
-            <li class="nav-item ml-2">
-              <a class="nav-link">عربة التسوق</a>
-            </li>
-            <li class="nav-item ml-2">
-              <a class="nav-link"><i class="fas fa-angle-left"></i></a>
-            </li>
-            <li class="nav-item ml-2">
-              <a class="nav-link active font-weight-bold"> إتمام عملية الشراء </a>
-            </li>
-          </ul>
+      <div class="container">
+        <a class="navbar-brand text-right" href="{{ url_for('landing_page') }}">الصفحة الرئيسية</a>
+        <div class="container  d-flex justify-content-center pt-3 pb-3">
+            <ul class="navbar-nav">
+              <li class="nav-item ml-2">
+                <a class="nav-link"  href="{{ url_for('.shopping_cart') }}">عربة التسوق</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a class="nav-link disabled"><i class="fas fa-angle-left"></i></a>
+              </li>
+              <li class="nav-item ml-2">
+                <a class="nav-link active font-weight-bold"  href="{{ url_for('.submit_purchase') }}"> إتمام عملية الشراء </a>
+              </li>
+            </ul>
+        </div>
       </div>
     </nav>
 
@@ -100,7 +103,9 @@
               <label for="inputAddress2">تفاصيل السكن</label>
               <input type="text" class="form-control" placeholder="رقم العمارة, رقم الطابق, ...">
             </div>
-            check box for policies and terms of use and terms of sale
+            <div class="form-check">
+              <input type="checkbox" name="" value=""> I have a bike<br>
+            </div>
           </div>
         </div>
         <div class="row">

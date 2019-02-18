@@ -10,7 +10,7 @@ def landing_page():
 
 @app.route("/products/<int:category_id>", methods=["GET"])
 def products(category_id):
-    f"this is '{category_id}' products page created mainly for browsing items."
+    # f"this is '{category_id}' products page created mainly for browsing items."
     return render_template("products.html")
 
 

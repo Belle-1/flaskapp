@@ -52,6 +52,7 @@ def func():
 		# exec(f"""color{i} = Color({''.join(choices(ascii_lowercase, k=10))})""")
 		# exec(f"""color{i} = Color(color='cccccc')""")
 		db.session.add(eval(f"""Color(color='cccccc')"""))
+		print(f'hello from color number {i}')
 
 	# for i in range(1, 20):
 	# 	db.session.add(eval(f"""color{i}"""))
@@ -114,7 +115,7 @@ def func():
 
 	# Order
 	for i in range(1, 20):
-		exec(f"""order{i} = Order(customer_id={randint(1, 19)}, delivery_charges={randint(200, 300)}, sub_total={randint(1000,10000)}, total_quantity={randint(1, 20)})""")
+		exec(f"""order{i} = Order(customer_id={randint(1, 19)}, delivery_charges={randint(200, 300)})""")
 
 	for i in range(1, 20):
 		db.session.add(eval(f"""order{i}"""))
@@ -122,10 +123,15 @@ def func():
 
 	# OrderItem
 	for i in range(1, 20):
-		exec(f"""order_item{i} = OrderItem(order_id={randint(1, 19)}, product_size_color_id={randint(1, 49)}, sale_id={randint(1, 19)}, selling_price={randint(1, 19)}, quantity={randint(1, 10)})""")
+		exec(f"""order_item{i} = OrderItem(order_id={randint(1, 19)}, product_id={randint(1, 19)}, product_size_color_id={randint(1, 49)}, quantity={randint(1, 10)})""")
 
 	for i in range(1, 20):
 		db.session.add(eval(f"""order_item{i}"""))
+	db.session.commit()
+
+	for i in range(1, 20):
+		exec(f"""order_item{i}._update()""")
+		exec(f"""order{i}._update()""")
 	db.session.commit()
 
 	print("done!")

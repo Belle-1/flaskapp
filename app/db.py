@@ -29,36 +29,49 @@ class Address(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
-    total = db.Column(db.Integer, nullable=False)
+    total = db.Column(db.Integer, nullable=False, default=0)  #
     submitted_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     delivery_charges = db.Column(db.Integer, nullable=False)
-    sub_total = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically #ON HOLD
-    total_quantity = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically # ON HOLD
+    sub_total = db.Column(db.Integer, nullable=False, default=0)  #
+    total_quantity = db.Column(db.Integer, nullable=False, default=0)  #
     order_items = db.relationship('OrderItem', backref='order', lazy=True)
 
-    def __init__(self, customer_id, delivery_charges, sub_total, total_quantity):
-        self.customer_id = customer_id
-        self.delivery_charges = delivery_charges
-        self.sub_total = sub_total
-        self.total_quantity = total_quantity
-        self.total = delivery_charges + sub_total
+    def _update(self):
+        self.total_quantity = sum([i.quantity for i in self.order_items])
+        self.sub_total = sum([i.selling_price for i in self.order_items])
+        self.total = self.delivery_charges + self.sub_total
 
 
 class OrderItem(db.Model):
     __tablename__ = "order_item"
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)  #
     product_size_color_id = db.Column(db.Integer, db.ForeignKey('product_size_color.id'), nullable=False)
-    sale_id = db.Column(db.Integer, db.ForeignKey('sale.id'), nullable=True, default=None)
-    selling_price = db.Column(db.Integer, nullable=False)  # needs to be calculated automatically like: original price */+=? sale_amount #ON HOLD
+    sale_id = db.Column(db.Integer, db.ForeignKey('sale.id'), nullable=True, default=None)  #
+    selling_price = db.Column(db.Integer, nullable=False, default=0)  #
     quantity = db.Column(db.Integer, nullable=False)
 
-    # def __init__(self, order_id, product_size_color_id, sale_id, quantity):
-    #     self.order_id = order_id
-    #     self.product_size_color_id = product_size_color_id
-    #     self.sale_id = sale_id
-    #     self.quantity = quantity
-    #     self.selling_price = 1/Sale.query.filter_by(id=sale_id).sale_amount * Product.product_size_colors.filter_by(id=product_size_color_id)  # this needs to be checked against None values for sales :)
+    def _update(self):
+        product_price = Product.query.filter_by(id=self.product_id).first().price
+        product_on_sale = Product.query.filter_by(id=self.product_id).first().on_sale
+        self.sale_id = ProductSale.query.filter_by(product_id=self.product_id).first().sale_id if product_on_sale else None
+        sale_amount = Sale.query.filter_by(id=self.sale_id).first().sale_amount if self.sale_id else 0
+        self.selling_price = product_price - (product_price * (sale_amount / 100)) if sale_amount else product_price
+
+    def color(self, lang='eng'):
+        if lang == 'eng':
+            color = Color.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().color_id).first().color
+        elif lang == 'ar':
+            color = Color.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().color_id).first().color_ar
+        return color
+
+    def size(self, lang='eng'):
+        if lang == 'eng':
+            size = Size.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().size_id).first().size
+        elif lang == 'ar':
+            size = Size.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().size_id).first().size_ar
+        return size
 
 
 class Product(db.Model):
@@ -81,6 +94,7 @@ class Cat(db.Model):
     # is_main = db.Column(db.Boolean, nullable=False, default=False)
     # parent_id = db.Column(db.Integer, dbForeignKey('cat.id'), nullable=True)
     # level = db.Column(db.Integer, nullable=False)
+
 
 class Size(db.Model):
     id = db.Column(db.Integer, primary_key=True)

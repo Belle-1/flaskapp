@@ -29,11 +29,11 @@ class Address(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
-    total = db.Column(db.Integer, nullable=False, default=0)  #
+    total = db.Column(db.Integer, nullable=False, default=0)
     submitted_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     delivery_charges = db.Column(db.Integer, nullable=False)
-    sub_total = db.Column(db.Integer, nullable=False, default=0)  #
-    total_quantity = db.Column(db.Integer, nullable=False, default=0)  #
+    sub_total = db.Column(db.Integer, nullable=False, default=0)
+    total_quantity = db.Column(db.Integer, nullable=False, default=0)
     order_items = db.relationship('OrderItem', backref='order', lazy=True)
 
     def _update(self):
@@ -90,28 +90,28 @@ class Product(db.Model):
 class Cat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cat = db.Column(db.String(50), nullable=False)
-    # cat_ar = db.Column(db.String(50), nullable=False)
-    # is_main = db.Column(db.Boolean, nullable=False, default=False)
-    # parent_id = db.Column(db.Integer, dbForeignKey('cat.id'), nullable=True)
-    # level = db.Column(db.Integer, nullable=False)
+    cat_ar = db.Column(db.String(50), nullable=False)
+    is_main = db.Column(db.Boolean, nullable=False, default=False)
+    parent_id = db.Column(db.Integer, db.ForeignKey('cat.id'), nullable=True)
+    level = db.Column(db.Integer, nullable=False)
 
 
 class Size(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     size = db.Column(db.String(5), nullable=False)
-    # size_ar = db.Column(db.String(50), nullable=False)
+    size_ar = db.Column(db.String(50), nullable=False)
 
 
 class Color(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     color = db.Column(db.String(25), nullable=False)
-    # color_ar = db.Column(db.String(25), nullable=False)
+    color_ar = db.Column(db.String(25), nullable=False)
 
 
 class Sale(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sale_amount = db.Column(db.Integer, nullable=False)
-    # sale_amount_ar = db.Column(db.Integer, nullable=False)
+    sale_amount_ar = db.Column(db.Integer, nullable=False)
 
 
 class ProductSizeColor(db.Model):
@@ -135,20 +135,21 @@ class ProductPhoto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     photo = db.Column(db.Text, nullable=False)
-    is_primary = db.Column(db.Boolean, default=False)
-    # is_low_quality = db.Column(db.Boolean, default=False)
-
-
-class PendingOrder(db.Model):
-    __tablename__ = "pending_order"
-    id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    is_primary = db.Column(db.Boolean, nullable=False, default=False)
+    is_low_quality = db.Column(db.Boolean, nullable=False, default=False)
 
 
 class OrderStatus(db.Model):
     __tablename__ = "order_status"
     id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    status_id = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
+
+
+class Status(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(20), nullable=False)
+    status_ar = db.Column(db.String(20), nullable=True)
 
 
 class HistoryOrder(db.Model):

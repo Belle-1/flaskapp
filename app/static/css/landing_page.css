@@ -180,7 +180,7 @@ table>tbody>tr.border-bottom{
   background-color: #e9ecef;
 }
 
-.pending-status-btn {
+.status-btn {
   pointer-events: none;
 }
 

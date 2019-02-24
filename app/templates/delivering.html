@@ -10,9 +10,6 @@
 
     <!--  custom CSS  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page.css') }}">
-
-    <!-- fontawesome.com -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <title>Hello, world!</title>
   </head>
   <body class="">
@@ -52,8 +49,6 @@
               <tr>
                 <th scope="col" class="fit">ID</th>
                 <th scope="col" class="">الزبون/ـة</th>
-                <th scope="col">تفاصيل الطلب</th>
-                <th scope="col" class="fit">المجموع الكلي</th>
                 <th scope="col" class="fit">وقت الطلب</th>
                 <th scope="col">حالة الطلب</th>
                 <th scope="col">إجراءات</th>
@@ -84,40 +79,13 @@
                     </div>
                   </div>
                 </td>
-                <td class="pt-3 pb-0 order-items">
-                  <table class="table borderless">
-                    <tbody>
-                      <tr class="border-bottom order-item">
-                        <td class="pr-0 pb-1 pt-0 ">
-                          <p class="test-dark mb-0" data-product-name=""> product name sdf dfsdfdsf sdfasdfasdaf goes in here</p>
-                          <p class="mb-0"><small><b>اللون: </b> <span data-product-color="">color here</span></small></p>
-                          <p class="mb-0"><small><b>المقاس: </b> <span data-product-size=""> L </span></small></p>
-                        </td>
-                        <td class="pr-0 pb-1 pl-0 pt-0 text-left">
-                          <p class="mb-0"><small><span data-product-quantity=""><b> 3 </b></span>قطع</small></p>
-                        </td>
-                      </tr>
-                      <tr class="border-bottom order-item">
-                        <td class="pr-0 pb-1 pt-0">
-                          <p class="test-dark mb-0" data-product-name=""> product name goes in here</p>
-                          <p class="mb-0"><small><b>اللون: </b> <span data-product-color="">color here</span></small></p>
-                          <p class="mb-0"><small><b>المقاس: </b> <span data-product-size=""> L </span></small></p>
-                        </td>
-                        <td class="pr-0 pb-1 pl-0 pt-0 text-left">
-                          <p class="mb-0"><small><span data-product-quantity=""><b> 3 </b></span>قطع</small></p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-                <td data-total="">122342343$</td>
                 <td data-submitted-on="">2422019516</td>
                 <td>
-                  <button class="btn btn-sm btn-warning pending-status-btn" type="button"> قيد الانتظار </button>
+                  <button class="btn btn-sm btn-success status-btn" type="button"> قيد التوصيل </button>
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-primary" type="button"> قبول الطلب </button>
-                  <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#declineOrderModal" data-order-id="123" data-customer-name="sadfasdf asdfasd"> رفض الطلب </button>
+                  <button class="btn btn-sm btn-primary" type="button"> تم التوصيل </button>
+                  <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#failedOrderModal" data-order-id="123" data-customer-name="sadfasdf asdfasd"> فشل الطلب </button>
                 </td>
               </tr>
             </tbody>
@@ -127,11 +95,11 @@
     </div>
 
     <!-- Decline Order Modal -->
-    <div class="modal fade" id="declineOrderModal" tabindex="-1" role="dialog" aria-labelledby="declineOrderModalTitle" aria-hidden="true">
+    <div class="modal fade" id="failedOrderModal" tabindex="-1" role="dialog" aria-labelledby="failedOrderModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content text-right">
           <div class="modal-header">
-            <h5 class="modal-title" id="declineOrderModalTitle">رفض الطلب</h5>
+            <h5 class="modal-title" id="failedOrderModalTitle">فشل الطلب</h5>
             <div class="float-left">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -142,7 +110,7 @@
             <p class="modal-body-content font-weight-bold"></p>
             <form>
               <div class="form-group">
-                <label for="exampleFormControlTextarea1">الرجاء إدخال سبب الرفض: </label>
+                <label for="exampleFormControlTextarea1">الرجاء إدخال سبب فشل الطلب: </label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
             </form>
@@ -161,37 +129,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      var tableRows = $('table > tbody > tr');
-      var tableBodyCols = tableRows.children('td');
-      var pendingOrdersTable = $('.pending-orders');
-      var pendingOrdersTableBody = $('.pending-orders > tbody');
-
       $(document).ready(function(){
 
-        // makes hovered tr hover-effect its nested .order-items table
-        pendingOrdersTableBody.on("mouseover", ".pending-order", function(){
-          var orderItems = $(this).find(".order-item");
-            orderItems.addClass('bg-e9ecef');
-        });
-        pendingOrdersTableBody.on("mouseout", ".pending-order", function(){
-          var orderItems = $(this).find(".order-item");
-            orderItems.removeClass('bg-e9ecef');
-        });
-
-        // independent dropdown menus
-        $(".actions").on("click", ".dropdown-menu", function(event){
-          var status = event.target.text;
-          $(this).prev('button').text(status);
-        });
-
         // Varient modal content
-        $('#declineOrderModal').on('show.bs.modal', function (event) {
+        $('#failedOrderModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
           var orderID = button.data('order-id');
           var customerName = button.data('customer-name');
 
           var modal = $(this)
-          modal.find('.modal-body-content').text('رفض الطلب رقم ' + orderID + ' للزبون/ـة ' + customerName + '.')
+          modal.find('.modal-body-content').text('فشل الطلب رقم ' + orderID + ' للزبون/ـة ' + customerName + '.')
         })
 
       });

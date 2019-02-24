@@ -168,8 +168,21 @@ ul.site-features img {
     width: 1%;
 }
 
+.borderless td, .borderless th {
+    border: none;
+}
 
+table>tbody>tr.border-bottom{
+  border-bottom: 2px solid #D3D3D3;
+}
 
+.bg-e9ecef {
+  background-color: #e9ecef;
+}
+
+.pending-status-btn {
+  pointer-events: none;
+}
 
 
 

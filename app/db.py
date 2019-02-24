@@ -47,7 +47,7 @@ class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)  #
-    product_size_color_id = db.Column(db.Integer, db.ForeignKey('product_size_color.id'), nullable=False)
+    stock_id = db.Column(db.Integer, db.ForeignKey('stock.id'), nullable=False)
     sale_id = db.Column(db.Integer, db.ForeignKey('sale.id'), nullable=True, default=None)  #
     selling_price = db.Column(db.Integer, nullable=False, default=0)  #
     quantity = db.Column(db.Integer, nullable=False)
@@ -61,16 +61,16 @@ class OrderItem(db.Model):
 
     def color(self, lang='eng'):
         if lang == 'eng':
-            color = Color.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().color_id).first().color
+            color = Color.query.filter_by(id=Stock.query.filter_by(self.stock_id).first().color_id).first().color
         elif lang == 'ar':
-            color = Color.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().color_id).first().color_ar
+            color = Color.query.filter_by(id=Stock.query.filter_by(self.stock_id).first().color_id).first().color_ar
         return color
 
     def size(self, lang='eng'):
         if lang == 'eng':
-            size = Size.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().size_id).first().size
+            size = Size.query.filter_by(id=Stock.query.filter_by(self.stock_id).first().size_id).first().size
         elif lang == 'ar':
-            size = Size.query.filter_by(id=ProductSizeColor.query.filter_by(self.product_size_color_id).first().size_id).first().size_ar
+            size = Size.query.filter_by(id=Stock.query.filter_by(self.stock_id).first().size_id).first().size_ar
         return size
 
 
@@ -82,9 +82,9 @@ class Product(db.Model):
     price = db.Column(db.Integer, nullable=False)
     on_sale = db.Column(db.Boolean, nullable=False, default=False)
     total_quantity = db.Column(db.Integer, nullable=False)
-    photos = db.relationship('ProductPhoto', backref='product', lazy=True)
-    product_size_colors = db.relationship('ProductSizeColor', backref='product', lazy=True)
+    stocks = db.relationship('Stock', backref='product', lazy=True)
     product_sale = db.relationship('ProductSale', backref='product', lazy=True, uselist=False)
+    exists = db.Column(db.Boolean, nullable=False, default=True)
 
 
 class Cat(db.Model):
@@ -114,13 +114,15 @@ class Sale(db.Model):
     sale_amount_ar = db.Column(db.Integer, nullable=False)
 
 
-class ProductSizeColor(db.Model):
-    __tablename__ = "product_size_color"
+class Stock(db.Model):
+    __tablename__ = "stock"
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
     size_id = db.Column(db.Integer, db.ForeignKey('size.id'), nullable=False)
     color_id = db.Column(db.Integer, db.ForeignKey('color.id'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
+    photos = db.relationship('ProductPhoto', backref='product', lazy=True)
+    status_id = db.Column(db.Integer, db.ForeignKey('status.id'), nullable=False)
 
 
 class ProductSale(db.Model):
@@ -133,7 +135,7 @@ class ProductSale(db.Model):
 class ProductPhoto(db.Model):
     __tablename__ = "product_photo"
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    stock_id = db.Column(db.Integer, db.ForeignKey('stock.id'), nullable=False)
     photo = db.Column(db.Text, nullable=False)
     is_primary = db.Column(db.Boolean, nullable=False, default=False)
     is_low_quality = db.Column(db.Boolean, nullable=False, default=False)

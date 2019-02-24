@@ -30,3 +30,51 @@ def shopping_cart():
 def submit_purchase():
     # "this page dedicated for customers to provide shipment information along with phone number validation for submitting the purchase"
     return render_template("submit_purchase.html")
+
+
+@app.route("/logIn", methods=["GET", "POST"])
+def log_in():
+    # this page meant for rmployees to get to the system
+    return render_template("log_in.html")
+
+
+@app.route("/dashboard/<status>", methods=["GET", "POST"])
+def dashboard(status):
+    # this page shows orders to employees
+    if status == "pending":
+        return render_template("pending_orders.html")
+    elif status == "awaits_shipment":
+        return render_template("awaits_shipment.html")
+    elif status == "delivering":
+        return render_template("delivering.html")
+    elif status == "failed":
+        return render_template("failed_orders.html")
+    return render_template("dashboard.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#

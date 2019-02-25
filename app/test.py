@@ -215,8 +215,6 @@ def func2():
 		{'status': 'awaiting shipment', 'status_ar': 'قيد انتظار الشحن'},
 		{'status': 'shipped', 'status_ar': ''},
 		{'status': 'delivering', 'status_ar': 'قيد التوصيل'},
-		{'status': 'returned', 'status_ar': ''},
-		{'status': 'removed', 'status_ar': ''},
 		{'status': 'on hold', 'status_ar': ''}, # means that a product is now shipped to somebody but not delivered yet. so there is a possiblity of returning it
 	]
 	product_photos = [

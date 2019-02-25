@@ -45,8 +45,8 @@
     </nav>
 
     <div class="container-fluid mt-5">
-      <div class="row justify-content-center">
-        <div class="table-responsive-xl text-right table-bordered">
+      <div class="row justify-content-center mr-5 ml-5">
+        <div class="table-responsive text-right table-bordered">
           <table class="table table-hover pending-orders">
             <thead>
               <tr>
@@ -55,7 +55,7 @@
                 <th scope="col">تفاصيل الطلب</th>
                 <th scope="col" class="fit">المجموع الكلي</th>
                 <th scope="col" class="fit">وقت الطلب</th>
-                <th scope="col">حالة الطلب</th>
+                <th scope="col" class="fit">حالة الطلب</th>
                 <th scope="col">إجراءات</th>
               </tr>
             </thead>
@@ -66,15 +66,14 @@
                   <p class="mb-0 text-dark" data-customer-name="">first name + last name</p>
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-4 pr-0 pl-2">
+                      <div class="col-auto pr-0 pl-5">
                         <p class="mb-0 text-muted" data-customer-mobile=""><small><i class="fas fa-mobile-alt"></i> 2222019806</small></p>
                       </div>
-                      <div class="col-1 pr-0 pl-0"></div>
                       <div class="col-4 pr-0 pl-0">
                         <p class="mb-0 text-muted" data-customer-telephone=""><small><i class="fas fa-phone"></i> 2222019809</small></p>
                       </div>
                     </div>
-                    <div class="row text-muted"  style="width:340px;">
+                    <div class="row text-muted">
                       <div class="col-auto pr-0 pl-1">
                         <small><i class="fas fa-map-marker-alt"></i></small>
                       </div>
@@ -89,7 +88,8 @@
                     <tbody>
                       <tr class="border-bottom order-item">
                         <td class="pr-0 pb-1 pt-0 ">
-                          <p class="test-dark mb-0" data-product-name=""> product name sdf dfsdfdsf sdfasdfasdaf goes in here</p>
+                          <p class="text-dark mb-0" data-product-name=""> product name sdf dfsdfsdf asdfasdf dsf sdfasdfasdaf goes in here</p>
+                          <p class="text-muted mb-0" data-product-id=""><small>2522019#</small></p>
                           <p class="mb-0"><small><b>اللون: </b> <span data-product-color="">color here</span></small></p>
                           <p class="mb-0"><small><b>المقاس: </b> <span data-product-size=""> L </span></small></p>
                         </td>
@@ -99,7 +99,8 @@
                       </tr>
                       <tr class="border-bottom order-item">
                         <td class="pr-0 pb-1 pt-0">
-                          <p class="test-dark mb-0" data-product-name=""> product name goes in here</p>
+                          <p class="text-dark mb-0" data-product-name=""> product name goes in here</p>
+                          <p class="text-muted mb-0" data-product-id=""><small>2522019#</small></p>
                           <p class="mb-0"><small><b>اللون: </b> <span data-product-color="">color here</span></small></p>
                           <p class="mb-0"><small><b>المقاس: </b> <span data-product-size=""> L </span></small></p>
                         </td>
@@ -113,11 +114,11 @@
                 <td data-total="">122342343$</td>
                 <td data-submitted-on="">2422019516</td>
                 <td>
-                  <button class="btn btn-sm btn-warning pending-status-btn" type="button"> قيد الانتظار </button>
+                  <button class="btn btn-sm btn-block btn-secondary pending-status-btn" type="button"> فشل </button>
                 </td>
-                <td>
-                  <button class="btn btn-sm btn-primary" type="button"> قبول الطلب </button>
-                  <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#declineOrderModal" data-order-id="123" data-customer-name="sadfasdf asdfasd"> رفض الطلب </button>
+                <td class="fit">
+                  <button class="btn btn-sm btn-primary" type="button"> إعادة التوصيل </button>
+                  <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#removeOrderModal" data-order-id="123" data-customer-name="sadfasdf asdfasd"> إزالة الطلب </button>
                 </td>
               </tr>
             </tbody>
@@ -127,11 +128,11 @@
     </div>
 
     <!-- Decline Order Modal -->
-    <div class="modal fade" id="declineOrderModal" tabindex="-1" role="dialog" aria-labelledby="declineOrderModalTitle" aria-hidden="true">
+    <div class="modal fade" id="removeOrderModal" tabindex="-1" role="dialog" aria-labelledby="removeOrderModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content text-right">
           <div class="modal-header">
-            <h5 class="modal-title" id="declineOrderModalTitle">رفض الطلب</h5>
+            <h5 class="modal-title" id="removeOrderModalTitle">إزالة الطلب</h5>
             <div class="float-left">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -142,7 +143,7 @@
             <p class="modal-body-content font-weight-bold"></p>
             <form>
               <div class="form-group">
-                <label for="exampleFormControlTextarea1">الرجاء إدخال سبب الرفض: </label>
+                <label for="exampleFormControlTextarea1">الرجاء إدخال سبب إزالة الطلب: </label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
             </form>
@@ -178,20 +179,14 @@
             orderItems.removeClass('bg-e9ecef');
         });
 
-        // independent dropdown menus
-        $(".actions").on("click", ".dropdown-menu", function(event){
-          var status = event.target.text;
-          $(this).prev('button').text(status);
-        });
-
         // Varient modal content
-        $('#declineOrderModal').on('show.bs.modal', function (event) {
+        $('#removeOrderModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget);
           var orderID = button.data('order-id');
           var customerName = button.data('customer-name');
 
           var modal = $(this)
-          modal.find('.modal-body-content').text('رفض الطلب رقم ' + orderID + ' للزبون/ـة ' + customerName + '.')
+          modal.find('.modal-body-content').text('إزالة الطلب رقم ' + orderID + ' للزبون/ـة ' + customerName + '.')
         })
 
       });

@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <!-- fontawesome.com -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!--  custom CSS  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_page.css') }}">
     <title>Hello, world!</title>
@@ -42,16 +44,18 @@
     </nav>
 
     <div class="container-fluid mt-5">
-      <div class="row justify-content-center">
-        <div class="table-responsive-xl text-right table-bordered">
+      <div class="row justify-content-center mr-5 ml-5">
+        <div class="table-responsive text-right table-bordered">
           <table class="table table-hover pending-orders">
             <thead>
               <tr>
                 <th scope="col" class="fit">ID</th>
                 <th scope="col" class="">الزبون/ـة</th>
-                <th scope="col" class="fit">وقت الطلب</th>
+                <th scope="col" class="fit">المجموع الكلي</th>
+                <th scope="col" class="">وقت الطلب</th>
+                <th scope="col" class="">وقت الشحن</th>
                 <th scope="col">حالة الطلب</th>
-                <th scope="col">إجراءات</th>
+                <th scope="col" class="">إجراءات</th>
               </tr>
             </thead>
             <tbody>
@@ -61,29 +65,30 @@
                   <p class="mb-0 text-dark" data-customer-name="">first name + last name</p>
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-4 pr-0 pl-2">
+                      <div class="col-auto pr-0 pl-5">
                         <p class="mb-0 text-muted" data-customer-mobile=""><small><i class="fas fa-mobile-alt"></i> 2222019806</small></p>
                       </div>
-                      <div class="col-1 pr-0 pl-0"></div>
                       <div class="col-4 pr-0 pl-0">
                         <p class="mb-0 text-muted" data-customer-telephone=""><small><i class="fas fa-phone"></i> 2222019809</small></p>
                       </div>
                     </div>
-                    <div class="row text-muted"  style="width:340px;">
+                    <div class="row text-muted">
                       <div class="col-auto pr-0 pl-1">
                         <small><i class="fas fa-map-marker-alt"></i></small>
                       </div>
                       <div class="col pr-0 pl-0">
-                        <p data-product-address="" class="mb-0"> region, addr1 asdaSDAs daSDSASD Dsdfasa sdfasdfd, addr2 sadfsadf asdfasdfasdfasdfas dfasdfasdf.</p>
+                        <p data-product-address="" class="mb-0"> region, addr1 asdaSDAs daSDasdfa sdfasdfasdfas dfasdfasdf.</p>
                       </div>
                     </div>
                   </div>
                 </td>
-                <td data-submitted-on="">2422019516</td>
-                <td>
+                <td data-total-price="" class="">2522019615749</td>
+                <td data-submitted-on="" class="fit">25/2/2019 8:40 PM</td>
+                <td data-shipped-on="" class="fit">25/2/2019 8:40 PM</td>
+                <td class="fit">
                   <button class="btn btn-sm btn-success status-btn" type="button"> قيد التوصيل </button>
                 </td>
-                <td>
+                <td class="fit">
                   <button class="btn btn-sm btn-primary" type="button"> تم التوصيل </button>
                   <button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#failedOrderModal" data-order-id="123" data-customer-name="sadfasdf asdfasd"> فشل الطلب </button>
                 </td>

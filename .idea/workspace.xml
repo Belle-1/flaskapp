@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e6b56fa-4247-46a9-af88-d815dfabf75f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/static/css/landing_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/landing_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/awaits_shipment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/awaits_shipment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/delivering.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/delivering.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/pending_orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pending_orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/submit_purchase.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/submit_purchase.html" afterDir="false" />
-    </list>
+    <list default="true" id="7e6b56fa-4247-46a9-af88-d815dfabf75f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +12,7 @@
     <session id="-528470335">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.16" value="1" />
@@ -357,7 +351,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.041825093" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
